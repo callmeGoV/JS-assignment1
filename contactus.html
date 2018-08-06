@@ -1,0 +1,77 @@
+<html>  
+    <head> 
+       <meta charset = "utf-8"> 
+       <title>HTML ContactUS Page</title> 
+       <style>
+            .boxed {
+    border: 2px solid green ;
+  }
+        </style>
+       
+    </head> 
+   
+    <body style="background-color:powderblue;"> 
+        
+     
+    
+      
+            <div class="boxed">
+      
+          <center>
+             <form method="POST"><br>
+                 Name:
+                 <input type="text" id="name"  placeholder="Enter your name" minlength="3" maxlength="20" required>
+                 <br><br>
+                 Email:
+                 <input type="email" id="email" placeholder="example@example123.com" required>
+                 <br><br>
+                 Phone:
+                 <input type="number" id="phone"  placeholder="Enter your phone number" required> 
+                 <br><br>Question
+                 
+                 
+                 <textarea id="question" minlength="1" maxlength="200" rows="7" cols="25"  style="widows: 80px;"></textarea><br><br>
+                
+                 
+                 <input type="submit" onClick="contact()" value = "SEND"/> <br><br>
+                 <a href="login.html" >Back to Login Page</a>
+                 <br><br>
+               </form> 
+             </center>
+             </div>
+             <script>
+
+
+                 
+                    function contact() {
+                      var request = new XMLHttpRequest();
+                      // POST to httpbin which returns the POST data as JSON
+                      request.open('POST', 'http://demo6835492.mockable.io/sendEmail',true);
+                  
+                      var formData = new FormData();
+                      formData.append('name', document.getElementById('name').value);
+                      formData.append('email', document.getElementById('email').value);
+                      formData.append('phone', document.getElementById('phone').value);
+                      formData.append('question', document.getElementById('question').value);
+                      request.onreadystatechange = function () {
+                        if(request.readyState === 4 && request.status === 200) {
+                             console.log(request.responseText);
+                             alert(request.responseText);
+                             //var json=JSON.parse(request.response);
+                             //alert(json);
+                             //console.log(json);
+                          }
+                                            };
+
+                  
+                      request.send(formData);
+                      
+                      
+                        };
+                   
+                  </script>
+
+                  
+             
+        </body>
+        </html>
