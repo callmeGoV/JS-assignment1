@@ -23,7 +23,7 @@
                  <input type="text" id="name"  placeholder="Enter your name" minlength="1" maxlength="20" required > 
                  <br><br>
                  Email:
-                 <input type="email" id="email" placeholder="example@example123.com" >
+                 <input type="email" id="email" placeholder="example@example123.com" onblur="validateEmail(this.value);">
                  <br><br>
                  Password:
                  <input type="text" id="Password"  placeholder="Enter your password"  minlength="6" maxlength="15"><br><br>
@@ -35,6 +35,19 @@
                </form> 
              </center>
              </div>
+             <script>
+               function validateEmail(sEmail) {
+  var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+
+  if(!sEmail.match(reEmail)) {
+    alert("Invalid email address");
+    return false;
+  }
+
+  return true;
+
+}
+             </script>
 
         </body>
         </html>
